@@ -1,23 +1,29 @@
 import axios from 'axios';
-import { FETCH_USER, FETCH_USER_FAIL, FETCH_USER_SUCCESS } from './types';
+import { FETCH_USER_FAILED, FETCH_USER_SUCCESS } from './types';
 
-const url = 'https://api.spotify.com/v1/me';
+const ROOT_URL = 'https://api.spotify.com/v1/me';
 
 export function fetchUser(accessToken) {
   const request = axios({
-    url: url,
+    method: 'GET',
+    url: ROOT_URL,
     headers: { 
       'Authorization': `Bearer ${accessToken}`
     },
   });
 
   return (dispatch) => {
-    request.then(({ data }) => {
-      dispatch({ type: FETCH_USER, payload: data });
-    });
+    request.then(res => {
+      // if spotify says unauthorized then send them to home page
+      if (res.statusText === 'Unauthorized') {
+        window.location.href = './';
+      }
+      dispatch(fetchUserSuccess(res.data));
+    }).catch(error => {
+      dispatch(fetchUserFailed(error));
+    })
   };
 }
-
 
 export function fetchUserSuccess(user) {
   return {
@@ -26,8 +32,8 @@ export function fetchUserSuccess(user) {
   }
 }
 
-export function fetchUserFail() {
+export function fetchUserFailed(error) {
   return {
-    type: FETCH_USER_FAIL,
+    type: FETCH_USER_FAILED
   }
 }

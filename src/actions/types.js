@@ -1,4 +1,12 @@
 export const SET_TOKEN = 'set_token';
 export const FETCH_USER = 'fetch_user';
 export const FETCH_USER_SUCCESS = 'fetch_user_success';
-export const FETCH_USER_FAIL = 'fetch_user_fail';
+export const FETCH_USER_FAILED = 'fetch_user_failed';
+export const UPDATE_PREVIEW_TITLE = 'update_preview_title';
+export const FETCH_FEATURED_FAILED = 'fetch_featured_failed';
+export const FETCH_FEATURED_SUCCESS = 'fetch_featured_success';
+export const FETCH_NEW_RELEASES_SUCCESS = 'fetch_new_releases_success';
+export const FETCH_NEW_RELEASES_FAILED = 'fetch_new_releases_failed';
+export const FETCH_GENRES_SUCCESS = 'fetch_genres_success';
+export const FETCH_GENRES_FAILED = 'fetch_genres_failed';
+// export const UPDATE_PREVIEW = 'update_preview';

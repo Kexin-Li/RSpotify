@@ -32,9 +32,7 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <div className="app_container">
-          <Spotify />
-        </div>
+        <Spotify />
       </div>
     );
   };
@@ -42,8 +40,7 @@ class App extends Component {
 
 function mapStateToProps(state) {
   return {
-    token: state.tokenReducer.token,
-    user: state.userReducer.user
+    token: state.tokenReducer.token
   };
 }
 

@@ -1,0 +1,9 @@
+.browse-title {
+  list-style: none;
+  display: flex;
+}
+
+.browse-title-item {
+  margin-right: 15px;
+  cursor: pointer;
+}

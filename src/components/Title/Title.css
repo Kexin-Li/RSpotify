@@ -1,0 +1,11 @@
+.browse-navbar {
+  list-style: none;
+  display: flex;
+  padding: 0;
+}
+
+.browse-navbar-item {
+  font-size: 14px;
+  margin-right: 15px;
+  cursor: pointer;
+}
