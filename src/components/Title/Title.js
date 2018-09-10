@@ -14,7 +14,8 @@ const Title = (props) => {
 
   const renderPlayButton = () => {
     if (props.title === 'Recently Played' 
-      || props.title === 'Favorite Songs') {
+      || props.title === 'Favorite Songs'
+      || props.title === 'Albums') {
       return <PlayButton />
     }
   };

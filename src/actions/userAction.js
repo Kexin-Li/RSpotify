@@ -18,6 +18,7 @@ export function fetchUser(accessToken) {
       if (res.statusText === 'Unauthorized') {
         window.location.href = './';
       }
+      console.log('user: ', res);
       dispatch(fetchUserSuccess(res.data));
     }).catch(error => {
       dispatch(fetchUserFailed(error));

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import './Browse.css';
 
 const BrowsePreview = (props) => {
-  const renderPreview = () => {
+  const renderBrowse = () => {
     const view = props.view;
 
     if (view) {
@@ -20,7 +20,7 @@ const BrowsePreview = (props) => {
 
   return (
     <ul className="browse-preview">
-      { renderPreview() }
+      { renderBrowse() }
     </ul>
   )
 };

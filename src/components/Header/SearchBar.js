@@ -2,7 +2,12 @@ import React from 'react';
 
 const SearchBar = () => {
   return (
-    <div>SearchBar</div>
+    <form>
+      <input />
+      <span>
+        <i className="fa fa-search search" aria-hidden="true"/>
+      </span>
+    </form>
   );
 };
 

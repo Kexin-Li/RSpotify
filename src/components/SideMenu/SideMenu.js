@@ -4,20 +4,34 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { updatePreviewTitle } from '../../actions/uiAction';
 import { fetchFeatured } from '../../actions/browseAction';
+import { fetchSongs, fetchRecentlyPlayed } from '../../actions/songsAction';
+import { fetchAlbums } from '../../actions/albumsAction';
+import { fetchArtists } from '../../actions/artistsAction';
 
 const SideMenu = (props) => {
+  const fetchSongs = props.fetchSongs;
+  const fetchRecentlyPlayed = props.fetchRecentlyPlayed;
+  const fetchAlbums = props.fetchAlbums;
+  const fetchArtists = props.fetchArtists;
+
   const renderSideMenu = () => {
     const menus = [
-      { name: 'Recently Played', action: '' },
-      { name: 'Favorite Songs', action: '' },
-      { name: 'Albums', action: '' },
-      { name: 'Artists', action: '' }
+      { name: 'Recently Played', action: fetchRecentlyPlayed },
+      { name: 'Favorite Songs', action: fetchSongs },
+      { name: 'Albums', action: fetchAlbums },
+      { name: 'Artists', action: fetchArtists }
     ];
     return menus.map(menu => {
       return (
         <li
           key={menu.name}
-          onClick={ () => onMenuClick(menu.name) }
+          onClick={ () => {
+              menu.name === 'Artists' 
+                ? menu.action(props.token, props.artistIds) 
+                : menu.action(props.token);
+              onMenuClick(menu.name);
+            } 
+          }
         >
           {menu.name}
         </li>
@@ -25,7 +39,7 @@ const SideMenu = (props) => {
     });
   };
 
-  const onMenuClick = (title) => {
+  const onMenuClick = (title, action) => {
     props.updatePreviewTitle(title);
   };
 
@@ -48,14 +62,19 @@ const SideMenu = (props) => {
 
 function mapStateToProps(state) {
   return {
-    token: state.tokenReducer.token
+    token: state.tokenReducer.token,
+    artistIds: state.artistsReducer.artistIds
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
     updatePreviewTitle,
-    fetchFeatured
+    fetchFeatured,
+    fetchSongs,
+    fetchRecentlyPlayed,
+    fetchAlbums,
+    fetchArtists
   }, dispatch);
 }
 

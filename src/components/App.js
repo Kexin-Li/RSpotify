@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { setToken } from '../actions/tokenAction';
 import { fetchUser } from '../actions/userAction';
+import { fetchSongs } from '../actions/songsAction';
 import { authURL } from '../config/authKeys';
 import Spotify from './Spotify';
 
@@ -26,6 +27,8 @@ class App extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.token) {
       this.props.fetchUser(nextProps.token);
+      // default loading Favorite Songs preview
+      this.props.fetchSongs(nextProps.token);
     }
   }
 
@@ -47,7 +50,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
     setToken,
-    fetchUser
+    fetchUser,
+    fetchSongs
   }, dispatch);
 }
 

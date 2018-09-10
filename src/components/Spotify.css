@@ -4,5 +4,6 @@
 
 .mainview {
   flex-grow: 2;
-  margin-left: 10px;
+  margin-left: 20px;
+  padding: 20px;
 }
