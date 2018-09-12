@@ -3,4 +3,16 @@
   padding: 0;
   cursor: pointer;
   font-size: 14px;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  bottom: 10px;
+  width: 180px;
+  overflow-y: auto;
+}
+
+.artwork {
+  position: fixed;
+  left: 0;
+  bottom: 95px;
 }

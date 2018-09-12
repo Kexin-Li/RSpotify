@@ -3,15 +3,21 @@ import { connect } from 'react-redux';
 
 const PlayButton = (props) => {
   const renderBtn = () => {
-    if (props.songPaused) {
+    if (props.songPlaying && props.songPaused) {
       return 'PLAY';
-    } else {
+    } else if (props.songPlaying && !props.songPaused) {
       return 'PAUSE';
+    } else {
+      return 'PLAY';
     }
   };
 
+  const onBtnClick = () => {
+    
+  };
+
   return (
-    <button>
+    <button onClick={ () => onBtnClick() }>
       { renderBtn() }
     </button>
   );
@@ -19,7 +25,8 @@ const PlayButton = (props) => {
 
 function mapStateToProps(state) {
   return {
-    songPaused: state.songsReducer.songPaused
+    songPaused: state.songsReducer.songPaused,
+    songPlaying: state.songsReducer.songPlaying
   };
 }
 

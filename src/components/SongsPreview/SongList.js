@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import moment from 'moment';
-import { playSong, pauseSong } from '../../actions/songsAction';
+import { playSong, pauseSong, resumeSong, stopSong } from '../../actions/songsAction';
 
 class SongList extends Component {
   static audio;
@@ -14,17 +14,49 @@ class SongList extends Component {
   }
 
   audioHandler(songObj) {
-    if (this.props.songPaused) {
-      // send a play action
-      this.props.playSong(songObj);
+    if (songObj.id === this.props.songId) {
+      // 同一首歌
+      if (this.props.songPlaying && this.props.songPaused) {
+        // 已暂停
+        this.resumeSong();
+      } else if (this.props.songPlaying && !this.props.songPaused) {
+        // 已播放
+        this.pauseSong();
+      }
+    } else {
+      this.audioControl(songObj);
+    }
+  }
+
+  audioControl(songObj) {
+    const { playSong, stopSong } = this.props;
+
+    if(this.audio === undefined){
+      playSong(songObj);
       this.audio = new Audio(songObj.preview_url);
       this.audio.play();
     } else {
-      // send a pause action
-      this.props.pauseSong();
+      stopSong();
       this.audio.pause();
+      playSong(songObj);
+      this.audio = new Audio(songObj.preview_url);
+      this.audio.play();
     }
   }
+
+  pauseSong() {
+	  if(this.audio) {
+	    this.props.pauseSong();
+	    this.audio.pause();
+	  }
+	}
+
+	resumeSong() {
+	  if(this.audio) {
+	    this.props.resumeSong();
+	    this.audio.play();
+	  }
+	}
 
   render() {
     const songs = this.props.songs;
@@ -34,7 +66,8 @@ class SongList extends Component {
         const songObj = {
           id: song.track.id,
           name: song.track.name,
-          album: song.track.album.name,
+          albumName: song.track.album.name,
+          albumImg: song.track.album.images[0].url,
           artist: song.track.artists[0].name,
           date: moment(song.added_at).format('YYYY-MM-DD'),
           length: this.formatTime(song.track.duration_ms),
@@ -54,7 +87,7 @@ class SongList extends Component {
             </span>
             <span className="song-name">{ songObj.name }</span>
             <span className="song-artist">{ songObj.artist }</span>
-            <span className="song-album">{ songObj.album }</span>
+            <span className="song-album">{ songObj.albumName }</span>
             <span className="song-date">{ songObj.date }</span>
             <span className="song-length">{ songObj.length }</span>
           </li>
@@ -69,15 +102,18 @@ class SongList extends Component {
 function mapStateToProps(state) {
   return {
     songs: state.songsReducer.songs,
-    songPlaying: state.songsReducer.playSong,
+    songPlaying: state.songsReducer.songPlaying,
     songPaused: state.songsReducer.songPaused,
+    songId: state.songsReducer.songId
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
     playSong,
-    pauseSong
+    pauseSong,
+    stopSong,
+    resumeSong
   }, dispatch)
 }
 

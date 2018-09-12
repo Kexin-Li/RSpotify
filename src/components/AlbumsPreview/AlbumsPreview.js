@@ -8,7 +8,9 @@ const AlbumsPreview = (props) => {
       return albums.map(album => {
         return (
           <li key={album.album.id}>
-            {album.album.name}
+            <img alt={album.album.name} src={album.album.images[0].url} width="200" />
+            <p className="album-name">{album.album.name}</p>
+            <p className="album-artist">{album.album.artists[0].name}</p>
           </li>
         );
       });
@@ -16,7 +18,7 @@ const AlbumsPreview = (props) => {
   };
 
   return (
-    <ul className="albums-preview">
+    <ul className="img-preview album-preview">
       { renderAlbums() }
     </ul>
   );

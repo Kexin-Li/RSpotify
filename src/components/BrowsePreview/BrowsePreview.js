@@ -6,12 +6,12 @@ import './Browse.css';
 const BrowsePreview = (props) => {
   const renderBrowse = () => {
     const view = props.view;
-
     if (view) {
       return view.map(item => {
+        const src = item.images ? item.images[0].url : item.icons[0].url;
         return (
           <li key={item.id}>
-            {item.name}
+            <img alt={item.name} src={src} width="200" />
           </li>
         );
       });
@@ -19,7 +19,7 @@ const BrowsePreview = (props) => {
   };
 
   return (
-    <ul className="browse-preview">
+    <ul className="img-preview browse-preview">
       { renderBrowse() }
     </ul>
   )

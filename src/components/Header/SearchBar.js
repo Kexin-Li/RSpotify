@@ -4,7 +4,7 @@ const SearchBar = () => {
   return (
     <form>
       <input />
-      <span>
+      <span style={{marginLeft: '5px'}}>
         <i className="fa fa-search search" aria-hidden="true"/>
       </span>
     </form>

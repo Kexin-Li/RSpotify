@@ -4,18 +4,18 @@ import { connect } from 'react-redux';
 const ArtistsPreview = (props) => {
   const renderArtists = () => {
     const artists = props.artists;
-
     if (artists) {
       return artists.map(artist => {
         return <li key={artist.id}>
-          {artist.name}
+          <img alt={artist.name} src={artist.images[0].url} width="200" />
+          <p className="artist-name">{artist.name}</p>
         </li>
       });
     }
   };
 
   return (
-    <ul className="artists-preview">
+    <ul className="img-preview artist-preview">
       { renderArtists() }
     </ul>
   );

@@ -7,3 +7,36 @@
   margin-right: 15px;
   cursor: pointer;
 }
+
+.img-preview {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 14px;
+}
+
+.img-preview li {
+  padding: 10px;
+  line-height: 28px;
+  cursor: pointer;
+}
+
+.img-preview li img:hover {
+  opacity: 0.3;
+}
+
+.artist-preview li img {
+  border-radius: 50%;
+}
+
+.album-name {
+  margin: 0;
+  font-weight: 600;
+}
+.album-artist {
+  margin: 0;
+}
+.artist-name {
+  text-align: center;
+}

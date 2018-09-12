@@ -26,6 +26,8 @@
 
 .song-name {
   width: 250px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .song-album {
   width: 210px;
