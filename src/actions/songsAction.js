@@ -2,12 +2,13 @@ import _ from 'lodash';
 import axios from 'axios';
 import { 
   FETCH_SONGS_SUCCESS, FETCH_SONGS_FAILED,
-  FETCH_RECENTLY_PLAYED_SUCCESS, FETCH_RECENTLY_PLAYED_FAILED 
+  FETCH_RECENTLY_PLAYED_SUCCESS, FETCH_RECENTLY_PLAYED_FAILED,
+  PLAY_SONG, PAUSE_SONG, STOP_SONG, RESUME_SONG
 } from './types';
 import { setArtistIds } from './artistsAction';
 
 const SONGS_URL = 'https://api.spotify.com/v1/me/tracks';
-const PLAYER_URL = '	https://api.spotify.com/v1/me/player';
+const PLAYER_URL = 'https://api.spotify.com/v1/me/player';
 
 /**
  * Get a User's Saved Tracks
@@ -88,5 +89,30 @@ export function fetchRecentlyPlayedSuccess(recentlyPlayed) {
 export function fetchRecentlyPlayedFailed(error) {
   return {
     type: FETCH_RECENTLY_PLAYED_FAILED,
+  };
+}
+
+export function playSong(song) {
+  return {
+    type: PLAY_SONG,
+    payload: song
+  };
+}
+
+export function pauseSong() {
+  return {
+    type: PAUSE_SONG
+  };
+}
+
+export function stopSong() {
+  return {
+    type: STOP_SONG
+  };
+}
+
+export function resumeSong() {
+  return {
+    type: RESUME_SONG
   };
 }

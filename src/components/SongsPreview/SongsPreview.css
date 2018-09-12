@@ -1,0 +1,41 @@
+.songs-preview {
+  list-style: none;
+  padding: 0;
+  font-size: 14px;
+}
+
+.songs-preview li {
+  display: flex;
+  justify-content: space-around;
+  cursor: pointer;
+  border-bottom: 1px solid #666;
+  line-height: 40px;
+}
+
+.songs-preview li:hover {
+  background: #eee;
+}
+
+.head {
+  font-weight: 600;
+}
+
+.head-name {
+  margin-left: 20px;
+}
+
+.song-name {
+  width: 250px;
+}
+.song-album {
+  width: 210px;
+}
+.song-artist {
+  width: 180px;
+}
+.song-date {
+  width: 80px;
+}
+.song-length {
+  width: 60px;
+}

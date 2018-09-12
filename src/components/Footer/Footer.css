@@ -4,5 +4,53 @@
   bottom: 0;
   left: 0;
   height: 100px;
-  background: darkcyan;
+  background: #89846C;
+}
+
+.song-detail {
+  position: absolute;
+  left: 20px;
+  line-height: 22px;
+  font-size: 14px;
+}
+
+.song-detail .song-name {
+  margin-bottom: 0;
+}
+
+.song-detail .song-artist {
+  margin-top: 0;
+}
+
+.song-control {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.song-control span {
+  padding: 10px;
+}
+
+.song-progress-container {
+  display: flex;
+  justify-content: center;
+}
+
+.time-start, .time-end {
+  margin-top: 0;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.song-progress {
+  width: 500px;
+  height: 4px;
+  background: black;
+  margin-top: 10px;
+}
+
+.song-expired {
+  width: 100px;
+  height: 4px;
+  background: #1db954;
 }

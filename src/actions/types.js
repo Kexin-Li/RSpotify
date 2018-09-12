@@ -20,3 +20,7 @@ export const FETCH_ARTISTS_FAILED = 'fetch_artists_failed';
 export const SET_ARTISTS_IDS = 'set_artists_ids';
 export const FETCH_PLAYLISTS_SUCCESS = 'fetch_playlists_success';
 export const FETCH_PLAYLISTS_FAILED = 'fetch_playlists_failed';
+export const PLAY_SONG = 'play_song';
+export const STOP_SONG = 'stop_song';
+export const PAUSE_SONG = 'pause_song';
+export const RESUME_SONG = 'resume_song';

@@ -1,11 +1,26 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-const PlayButton = () => {
+const PlayButton = (props) => {
+  const renderBtn = () => {
+    if (props.songPaused) {
+      return 'PLAY';
+    } else {
+      return 'PAUSE';
+    }
+  };
+
   return (
     <button>
-      Play
+      { renderBtn() }
     </button>
   );
 };
 
-export default PlayButton;
+function mapStateToProps(state) {
+  return {
+    songPaused: state.songsReducer.songPaused
+  };
+}
+
+export default connect(mapStateToProps)(PlayButton);

@@ -7,6 +7,7 @@ import { fetchFeatured } from '../../actions/browseAction';
 import { fetchSongs, fetchRecentlyPlayed } from '../../actions/songsAction';
 import { fetchAlbums } from '../../actions/albumsAction';
 import { fetchArtists } from '../../actions/artistsAction';
+import Artwork from './Artwork';
 
 const SideMenu = (props) => {
   const fetchSongs = props.fetchSongs;
@@ -56,6 +57,10 @@ const SideMenu = (props) => {
       <li>Radio</li>
       <h5>YOUR LIBIARY</h5>
       { renderSideMenu() }
+      <Artwork />
+      {/* <div className="artwork">
+        <img />
+      </div> */}
     </ul>
   );
 };

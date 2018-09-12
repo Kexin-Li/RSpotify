@@ -1,32 +1,24 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import SongList from './SongList';
+
+import './SongsPreview.css';
 
 const SongsPreview = (props) => {
-  const renderSongs = () => {
-    const songs = props.songs;
-
-    if (songs) {
-      return songs.map(song => {
-        return (
-          <li key={song.track.id}>
-            {song.track.name}
-          </li>
-        );
-      });
-    }
-  };
-
   return (
     <ul className="songs-preview">
-      { renderSongs() }
+      <li className="head">
+        <span className="song-play"></span>
+        <span className="add-song"></span>
+        <span className="song-name head-name">TITLE</span>
+        <span className="song-artist">ARTIST</span>
+        <span className="song-album">ALBUM</span>
+        <span className="song-date">DATE</span>
+        <span className="song-length">LENGTH</span>
+      </li>
+      <SongList />
     </ul>
   );
 };
 
-function mapStateToProps(state) {
-  return {
-    songs: state.songsReducer.songs
-  }
-}
-
-export default connect(mapStateToProps)(SongsPreview);
+export default SongsPreview;
+ 

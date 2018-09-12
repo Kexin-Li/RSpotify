@@ -4,7 +4,7 @@ import SideMenu from './SideMenu/SideMenu';
 import Header from './Header/Header';
 import Title from './Title/Title';
 import Preview from './Preview/Preview';
-// import Footer from './Footer/Footer';
+import Footer from './Footer/Footer';
 
 class Spotify extends Component {
   render() {
@@ -16,7 +16,7 @@ class Spotify extends Component {
           <Title />
           <Preview />
         </div>
-        {/* <Footer /> */}
+        <Footer />
       </div>
     );
   }
