@@ -6,22 +6,22 @@ const Avatar = (props) => {
     const user = props.user;
     if (user) {
       return (
-        <div>
-          <img alt="user" src={user.images[0]} />
-          <p>{user.display_name}</p>
+        <div className="avatar">
+          <img alt="user" src={ user.images[0].url } />
+          <p>{ user.display_name }</p>
         </div>
       );
     }
   };
 
   return (
-    <div className="avator">
+    <div className="avator-wrapper">
       { renderAvator() }
     </div>
   )
 };
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
   return {
     user: state.userReducer.user
   };

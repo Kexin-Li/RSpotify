@@ -3,8 +3,8 @@ import React from 'react';
 const SearchBar = () => {
   return (
     <form>
-      <input />
-      <span style={{marginLeft: '5px'}}>
+      <input type="text" placeholder="Search" />
+      <span>
         <i className="fa fa-search search" aria-hidden="true"/>
       </span>
     </form>

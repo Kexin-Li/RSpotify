@@ -1,18 +1,21 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchGenres, fetchNewReleases, fetchFeatured } from '../../actions/browseAction';
 
-const NavBar = (props) => {
-  const titles = ['GENRES', 'NEW RELEASES', 'FEATURED'];
+class NavBar extends Component {
+  titles = ['GENRES', 'NEW RELEASES', 'FEATURED'];
+  state = {
+    subTitle: this.titles[2]
+  }
 
-  const renderBar = () => {
-    return titles.map(title => {
+  renderBar = () => {
+    return this.titles.map(title => {
       return (
         <li 
           key={title}
-          className="browse-navbar-item"
-          onClick={ () => onBarClick(title, props.token) }
+          className={ this.state.subTitle === title ? 'browse-navbar-item active' : 'browse-navbar-item' }
+          onClick={ () => this.onBarClick(title, this.props.token) }
         >
           {title}
         </li>
@@ -20,36 +23,42 @@ const NavBar = (props) => {
     });
   };
 
-  const onBarClick = (title, token) => {
+  onBarClick = (title, token) => {
     switch(title) {
-      case titles[0]:
-        props.fetchGenres(token);
+      case this.titles[0]:
+        this.props.fetchGenres(token);
+        this.setState({ subTitle: this.titles[0] });
         break;
-      case titles[1]:
-        props.fetchNewReleases(token);
+      case this.titles[1]:
+        this.props.fetchNewReleases(token);
+        this.setState({ subTitle: this.titles[1] });
         break;
-      case titles[2]:
-        props.fetchFeatured(token);
+      case this.titles[2]:
+        this.props.fetchFeatured(token);
+        this.setState({ subTitle: this.titles[2] });
         break;
       default:
-        props.fetchFeatured(token);
+        this.props.fetchFeatured(token);
+        this.setState({ subTitle: this.titles[2] });
     }
   };
 
-  return (
-    <ul className="browse-navbar">
-      { renderBar() }
-    </ul>
-  );
+  render() {
+    return (
+      <ul className="browse-navbar">
+        { this.renderBar() }
+      </ul>
+    );
+  }
 };
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
   return {
     token: state.tokenReducer.token
   };
 }
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     fetchFeatured,
     fetchGenres,

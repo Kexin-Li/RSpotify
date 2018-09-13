@@ -27,14 +27,14 @@ const Title = (props) => {
 
   return (
     <div className="preview-title">
-      <h2>{ props.title }</h2>
+      <h1>{ props.title }</h1>
       { renderNavBar() }
       { renderPlayButton() }
     </div>
   )
 };
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
   return {
     title: state.uiReducer.title
   };

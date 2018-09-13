@@ -1,5 +1,4 @@
 import React from 'react';
-import './SideMenu.css';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { updatePreviewTitle } from '../../actions/uiAction';
@@ -8,6 +7,8 @@ import { fetchSongs, fetchRecentlyPlayed } from '../../actions/songsAction';
 import { fetchAlbums } from '../../actions/albumsAction';
 import { fetchArtists } from '../../actions/artistsAction';
 import Artwork from './Artwork';
+
+import './SideMenu.css';
 
 const SideMenu = (props) => {
   const fetchSongs = props.fetchSongs;
@@ -25,7 +26,8 @@ const SideMenu = (props) => {
     return menus.map(menu => {
       return (
         <li
-          key={menu.name}
+          className={ props.title === menu.name ? 'active' : '' }
+          key={ menu.name }
           onClick={ () => {
               menu.name === 'Artists' 
                 ? menu.action(props.token, props.artistIds) 
@@ -51,8 +53,17 @@ const SideMenu = (props) => {
 
   return (
     <ul className="sidemenu-container">
-      <li onClick={ onBrowseClick }>Browse</li>
-      <li>Radio</li>
+      <li 
+        onClick={ onBrowseClick } 
+        className={ props.title === 'Browse' ? 'active' : '' }
+      >
+        Browse
+      </li>
+      <li 
+        className={ props.title === 'Radio' ? 'active' : '' }
+      >
+        Radio
+      </li>
       <h5>YOUR LIBIARY</h5>
       { renderSideMenu() }
       <Artwork />
@@ -60,14 +71,15 @@ const SideMenu = (props) => {
   );
 };
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
   return {
     token: state.tokenReducer.token,
+    title: state.uiReducer.title,
     artistIds: state.artistsReducer.artistIds
   };
 }
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     updatePreviewTitle,
     fetchFeatured,

@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import './AlbumsPreview.css';
+
 const AlbumsPreview = (props) => {
   const renderAlbums = () => {
     const albums = props.albums;
@@ -24,7 +26,7 @@ const AlbumsPreview = (props) => {
   );
 };
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
   return {
     albums: state.albumsReducer.albums
   }

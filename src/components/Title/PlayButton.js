@@ -17,13 +17,13 @@ const PlayButton = (props) => {
   };
 
   return (
-    <button onClick={ () => playHandler() }>
+    <button className="play-btn" onClick={ playHandler }>
       { renderBtn() }
     </button>
   );
 };
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
   return {
     songPaused: state.songsReducer.songPaused,
     songPlaying: state.songsReducer.songPlaying

@@ -21,11 +21,14 @@
 
 .song-detail .song-artist {
   margin-top: 0;
+  font-size: 12px;
+  color: #b3b3b3;
+  font-weight: 300;
 }
 
 .song-control {
   text-align: center;
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 .song-control span {
@@ -33,23 +36,33 @@
   cursor: pointer;
 }
 
+.song-control .prev-btn, .song-control .next-btn {
+  color: #b3b3b3;
+  font-size: 15px;
+}
+
+.song-control .play-btn {
+  color: #b3b3b3;
+  font-size: 25px;
+}
+
 .song-progress-container {
   display: flex;
   justify-content: center;
-  margin-top: 10px;
 }
 
 .time-start, .time-end {
   margin-top: 0;
   padding-right: 10px;
   padding-left: 10px;
+  font-size: 12px;
 }
 
 .song-progress {
   width: 500px;
   height: 4px;
   background: black;
-  margin-top: 10px;
+  margin-top: 7px;
 }
 
 .song-expired {

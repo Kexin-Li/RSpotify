@@ -6,11 +6,13 @@ import BrowsePreview from '../BrowsePreview/BrowsePreview';
 import AlbumsPreview from '../AlbumsPreview/AlbumsPreview';
 import ArtistsPreview from '../ArtistsPreview/ArtistsPreview';
 
+import './Preview.css';
+
 const Preview = (props) => {
   const renderPreview = () => {
     switch(props.title) {
       case 'Browse':
-        return <BrowsePreview/>
+        return <BrowsePreview/>;
       case 'Recently Played':
         return (
           <SongsPreview
@@ -49,7 +51,7 @@ const Preview = (props) => {
   );
 };
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
   return {
     title: state.uiReducer.title,
     token: state.tokenReducer.token

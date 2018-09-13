@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import './ArtistsPreview.css';
+
 const ArtistsPreview = (props) => {
   const renderArtists = () => {
     const artists = props.artists;
@@ -21,7 +23,7 @@ const ArtistsPreview = (props) => {
   );
 };
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
   return {
     artists: state.artistsReducer.artists
   }

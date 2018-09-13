@@ -9,6 +9,31 @@
   bottom: 10px;
   width: 180px;
   overflow-y: auto;
+  padding: 20px;
+  color: #b3b3b3;
+}
+
+.sidemenu-container li {
+  line-height: 28px;
+}
+
+.sidemenu-container li:hover {
+  color: #fff;
+}
+
+.sidemenu-container .active {
+  margin-left: -3px;
+}
+
+.sidemenu-container .active::before {
+  content: "";
+  position: relative;
+  left: -18px;
+  border-left: 3px solid #1db954;
+}
+
+.sidemenu-container h5 {
+  font-weight: 300;
 }
 
 .artwork {

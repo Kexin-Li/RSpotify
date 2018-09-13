@@ -13,17 +13,19 @@ class SongList extends Component {
 
   render() {
     const songs = this.props.songs;
-
     if (songs) {
       return songs.map((song, index) => {
         const songObj = createSongObj(song);
+        const playClass = songObj.id === this.props.songId && !this.props.songPaused 
+          ? "fa-pause-circle-o" : "fa-play-circle-o";
+
         return (
-          <li key={ index }>
+          <li key={ index } className={songObj.id === this.props.songId ? 'active songlist' : 'songlist'}>
             <span 
               className="play-song"
               onClick={ () => this.playHandler(songObj) }
             >
-              <i className="fa fa-play-circle-o play-btn" aria-hidden="true" />
+              <i className={ `fa ${playClass} play-btn` } aria-hidden="true" />
             </span>
             <span className="add-song">
               <i className="fa fa-plus add-song" aria-hidden="true" />
@@ -42,7 +44,7 @@ class SongList extends Component {
   }
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
   return {
     songs: state.songsReducer.songs,
     songPlaying: state.songsReducer.songPlaying,

@@ -14,7 +14,7 @@ const SongDetail = (props) => {
   )
 };
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
   return {
     songDetail: state.songsReducer.songDetail
   }

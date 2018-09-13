@@ -7,7 +7,7 @@ const SongsPreview = (props) => {
   return (
     <ul className="songs-preview">
       <li className="head">
-        <span className="song-play"></span>
+        <span className="play-song"></span>
         <span className="add-song"></span>
         <span className="song-name head-name">TITLE</span>
         <span className="song-artist">ARTIST</span>

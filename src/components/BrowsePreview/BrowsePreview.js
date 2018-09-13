@@ -25,7 +25,7 @@ const BrowsePreview = (props) => {
   )
 };
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
   return {
     view: state.browseReducer.view,
   };
