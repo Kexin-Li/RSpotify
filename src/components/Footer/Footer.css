@@ -36,6 +36,7 @@
 .song-progress-container {
   display: flex;
   justify-content: center;
+  margin-top: 10px;
 }
 
 .time-start, .time-end {
@@ -55,4 +56,10 @@
   width: 100px;
   height: 4px;
   background: #1db954;
+}
+
+.volume-control {
+  float: right;
+  margin-top: -30px;
+  margin-right: 10px;
 }

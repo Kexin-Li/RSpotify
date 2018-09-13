@@ -36,7 +36,6 @@ class Spotify extends Component {
 
   audioControl = (songObj) => {
     const { playSong, stopSong } = this.props;
-    
     if (this.audio === undefined) {
       playSong(songObj);
       this.audio = new Audio(songObj.preview_url);
@@ -48,7 +47,13 @@ class Spotify extends Component {
       this.audio = new Audio(songObj.preview_url);
       this.audio.play();
     }
-  }
+  };
+
+  volumeControl = (volume) => {
+    if (this.audio !== undefined) {
+      this.audio.volume = volume / 100;
+    }
+  };
 
   render() {
     return (
@@ -71,13 +76,14 @@ class Spotify extends Component {
           pauseSong={ this.pauseSong }
           resumeSong={ this.resumeSong }
           audioControl={ this.audioControl }
+          volumeControl={ this.volumeControl }
         />
       </div>
     );
   }
 }
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     playSong,
     stopSong,
