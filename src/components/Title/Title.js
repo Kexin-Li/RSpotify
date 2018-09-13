@@ -8,7 +8,7 @@ import './Title.css';
 const Title = (props) => {
   const renderNavBar = () => {
     if (props.title === 'Browse') {
-      return <NavBar />
+      return <NavBar />;
     }
   };
 
@@ -16,7 +16,12 @@ const Title = (props) => {
     if (props.title === 'Recently Played' 
       || props.title === 'Favorite Songs'
       || props.title === 'Albums') {
-      return <PlayButton />
+      return (
+        <PlayButton
+          pauseSong={ props.pauseSong }
+          resumeSong={ props.resumeSong }
+        />
+      );
     }
   };
 

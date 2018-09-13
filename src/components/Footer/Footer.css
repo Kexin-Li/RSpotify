@@ -30,6 +30,7 @@
 
 .song-control span {
   padding: 10px;
+  cursor: pointer;
 }
 
 .song-progress-container {

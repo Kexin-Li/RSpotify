@@ -12,12 +12,12 @@ const PlayButton = (props) => {
     }
   };
 
-  const onBtnClick = () => {
-    
+  const playHandler = () => {
+    !props.songPaused ? props.pauseSong() : props.resumeSong();
   };
 
   return (
-    <button onClick={ () => onBtnClick() }>
+    <button onClick={ () => playHandler() }>
       { renderBtn() }
     </button>
   );

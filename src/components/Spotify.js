@@ -36,7 +36,7 @@ class Spotify extends Component {
 
   audioControl = (songObj) => {
     const { playSong, stopSong } = this.props;
-
+    
     if (this.audio === undefined) {
       playSong(songObj);
       this.audio = new Audio(songObj.preview_url);
@@ -56,7 +56,10 @@ class Spotify extends Component {
         <SideMenu />
         <div className="mainview">
           <Header />
-          <Title />
+          <Title
+            pauseSong={ this.pauseSong }
+            resumeSong={ this.resumeSong }
+          />
           <Preview
             pauseSong={ this.pauseSong }
             resumeSong={ this.resumeSong }
