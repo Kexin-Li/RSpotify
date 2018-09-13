@@ -15,7 +15,11 @@ const SongsPreview = (props) => {
         <span className="song-date">DATE</span>
         <span className="song-length">LENGTH</span>
       </li>
-      <SongList />
+      <SongList
+        pauseSong={ props.pauseSong }
+        resumeSong={ props.resumeSong }
+        audioControl={ props.audioControl }
+      />
     </ul>
   );
 };

@@ -26,7 +26,10 @@ class SongControl extends Component {
 function mapStateToProps(state) {
   return {
     songPlaying: state.songsReducer.songPlaying,
-    songPaused: state.songsReducer.songPaused
+    songPaused: state.songsReducer.songPaused,
+    timeElapsed: state.songsReducer.timeElapsed,
+    songs: state.songsReducer.songs,
+    songDetail: state.songsReducer.songDetail
   }
 }
 

@@ -13,7 +13,7 @@
 }
 
 .songs-preview li:hover {
-  background: #eee;
+  background: rgb(51, 51, 51);
 }
 
 .head {

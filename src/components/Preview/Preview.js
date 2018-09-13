@@ -10,17 +10,35 @@ const Preview = (props) => {
   const renderPreview = () => {
     switch(props.title) {
       case 'Browse':
-        return <BrowsePreview />;
+        return <BrowsePreview/>
       case 'Recently Played':
-        return <SongsPreview />;
+        return (
+          <SongsPreview
+            pauseSong={ props.pauseSong }
+            resumeSong={ props.resumeSong }
+            audioControl={ props.audioControl }
+          />
+        );
       case 'Favorite Songs':
-        return <SongsPreview />;
+        return (
+          <SongsPreview
+            pauseSong={ props.pauseSong }
+            resumeSong={ props.resumeSong }
+            audioControl={ props.audioControl }
+          />
+        );
       case 'Albums':
         return <AlbumsPreview />;
       case 'Artists':
         return <ArtistsPreview />;
       default:
-        return <SongsPreview />;
+        return (
+          <SongsPreview
+            pauseSong={ props.pauseSong }
+            resumeSong={ props.resumeSong }
+            audioControl={ props.audioControl }
+          />
+        );
     }
   };
 

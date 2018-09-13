@@ -7,6 +7,8 @@ import { fetchSongs } from '../actions/songsAction';
 import { authURL } from '../config/authKeys';
 import Spotify from './Spotify';
 
+import './App.css';
+
 class App extends Component {
   componentDidMount() {
     let hashParams = {};

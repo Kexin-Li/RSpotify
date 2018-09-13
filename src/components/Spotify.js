@@ -1,12 +1,55 @@
 import React, { Component } from 'react';
-import './Spotify.css';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import SideMenu from './SideMenu/SideMenu';
 import Header from './Header/Header';
 import Title from './Title/Title';
 import Preview from './Preview/Preview';
 import Footer from './Footer/Footer';
+import { playSong, stopSong, pauseSong, resumeSong } from '../actions/songsAction';
+
+import './Spotify.css';
 
 class Spotify extends Component {
+  static audio;
+
+  stopSong = () => {
+    if (this.audio) {
+      this.props.stopSong();
+      this.audio.pause();
+    }
+  }
+
+  pauseSong = () => {
+    if (this.audio) {
+      this.props.pauseSong();
+      this.audio.pause();
+    }
+  }
+
+  resumeSong = () => {
+    if (this.audio) {
+      this.props.resumeSong();
+      this.audio.play();
+    }
+  }
+
+  audioControl = (songObj) => {
+    const { playSong, stopSong } = this.props;
+
+    if (this.audio === undefined) {
+      playSong(songObj);
+      this.audio = new Audio(songObj.preview_url);
+      this.audio.play();
+    } else {
+      stopSong();
+      this.audio.pause();
+      playSong(songObj);
+      this.audio = new Audio(songObj.preview_url);
+      this.audio.play();
+    }
+  }
+
   render() {
     return (
       <div className="app-container">
@@ -14,12 +57,30 @@ class Spotify extends Component {
         <div className="mainview">
           <Header />
           <Title />
-          <Preview />
+          <Preview
+            pauseSong={ this.pauseSong }
+            resumeSong={ this.resumeSong }
+            audioControl={ this.audioControl }
+          />
         </div>
-        <Footer />
+        <Footer
+          stopSong={ this.stopSong }
+          pauseSong={ this.pauseSong }
+          resumeSong={ this.resumeSong }
+          audioControl={ this.audioControl }
+        />
       </div>
     );
   }
 }
 
-export default Spotify;
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({
+    playSong,
+    stopSong,
+    pauseSong,
+    resumeSong
+  }, dispatch)
+}
+
+export default connect(null, mapDispatchToProps)(Spotify);

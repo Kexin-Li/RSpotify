@@ -1,62 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import moment from 'moment';
-import { playSong, pauseSong, resumeSong, stopSong } from '../../actions/songsAction';
+import format from 'date-fns/format';
 
 class SongList extends Component {
-  static audio;
-
   formatTime(duration_ms) {
     const minutes = Math.floor(duration_ms / 60000);
     const seconds = ((duration_ms % 60000) / 1000).toFixed(0);
     return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
   }
 
-  audioHandler(songObj) {
-    if (songObj.id === this.props.songId) {
-      // 同一首歌
-      if (this.props.songPlaying && this.props.songPaused) {
-        // 已暂停
-        this.resumeSong();
-      } else if (this.props.songPlaying && !this.props.songPaused) {
-        // 已播放
-        this.pauseSong();
-      }
-    } else {
-      this.audioControl(songObj);
-    }
+  playHander = (songObj) => {
+    (songObj.id === this.props.songId) && this.props.songPlaying && this.props.songPaused
+    ? this.props.resumeSong()
+    : (songObj.id === this.props.songId) && this.props.songPlaying && !this.props.songPaused
+    ? this.props.pauseSong()
+    : this.props.audioControl(songObj)
   }
-
-  audioControl(songObj) {
-    const { playSong, stopSong } = this.props;
-
-    if(this.audio === undefined){
-      playSong(songObj);
-      this.audio = new Audio(songObj.preview_url);
-      this.audio.play();
-    } else {
-      stopSong();
-      this.audio.pause();
-      playSong(songObj);
-      this.audio = new Audio(songObj.preview_url);
-      this.audio.play();
-    }
-  }
-
-  pauseSong() {
-	  if(this.audio) {
-	    this.props.pauseSong();
-	    this.audio.pause();
-	  }
-	}
-
-	resumeSong() {
-	  if(this.audio) {
-	    this.props.resumeSong();
-	    this.audio.play();
-	  }
-	}
 
   render() {
     const songs = this.props.songs;
@@ -69,7 +28,7 @@ class SongList extends Component {
           albumName: song.track.album.name,
           albumImg: song.track.album.images[0].url,
           artist: song.track.artists[0].name,
-          date: moment(song.added_at).format('YYYY-MM-DD'),
+          date: format(song.added_at, 'YYYY-MM-DD'),
           length: this.formatTime(song.track.duration_ms),
           preview_url: song.track.preview_url
         };
@@ -77,8 +36,8 @@ class SongList extends Component {
         return (
           <li key={ songObj.id }>
             <span 
-              className="song-play"
-              onClick={ (event) => this.audioHandler(songObj) }
+              className="play-song"
+              onClick={ () => this.playHander(songObj) }
             >
               <i className="fa fa-play-circle-o play-btn" aria-hidden="true" />
             </span>
@@ -108,13 +67,4 @@ function mapStateToProps(state) {
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({
-    playSong,
-    pauseSong,
-    stopSong,
-    resumeSong
-  }, dispatch)
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(SongList);
+export default connect(mapStateToProps)(SongList);

@@ -4,8 +4,8 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "date-fns": "^1.29.0",
     "lodash": "^4.17.10",
-    "moment": "^2.22.2",
     "react": "^16.5.0",
     "react-dom": "^16.5.0",
     "react-redux": "^5.0.7",
