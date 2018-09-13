@@ -15,7 +15,7 @@ export const createSongObj = (song) => {
       albumName: song.track.album.name,
       albumImg: song.track.album.images[0].url,
       artist: song.track.artists[0].name,
-      date: format(song.added_at, 'YYYY-MM-DD'),
+      date: song.added_at ? format(song.added_at, 'YYYY-MM-DD') : format(song.played_at, 'YYYY-MM-DD'),
       length: formatTime(song.track.duration_ms),
       preview_url: song.track.preview_url
     };

@@ -10,12 +10,13 @@ const Footer = (props) => {
     <footer className="footer">
       <SongDetail />
       <SongControler
-        stopSong={ props.stopSong }
         pauseSong={ props.pauseSong }
         resumeSong={ props.resumeSong }
         audioControl={ props.audioControl }
       />
-      <SongProgress />
+      <SongProgress
+        stopSong={ props.stopSong }
+      />
     </footer>
   );
 };

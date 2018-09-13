@@ -24,10 +24,14 @@
   margin-left: 20px;
 }
 
-.song-name {
-  width: 250px;
+.songs-preview li span {
   text-overflow: ellipsis;
   white-space: nowrap;
+  overflow: hidden;
+}
+
+.song-name {
+  width: 250px;
 }
 .song-album {
   width: 210px;
@@ -36,7 +40,7 @@
   width: 180px;
 }
 .song-date {
-  width: 80px;
+  width: 100px;
 }
 .song-length {
   width: 60px;

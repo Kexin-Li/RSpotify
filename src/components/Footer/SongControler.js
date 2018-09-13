@@ -3,13 +3,8 @@ import { connect } from 'react-redux';
 import { createSongObj } from '../Util';
 
 class SongControl extends Component {
-  state = {
-    timeElapsed: this.props.timeElapsed
-  }
-
   getSongIndex = () => {
     const { songs, songDetail } = this.props;
-
     if (songDetail === undefined) {
       return;
     }
@@ -20,7 +15,6 @@ class SongControl extends Component {
     }).filter(item => {
       return item !== undefined;
     })[0];
-
     return currentIndex;
   }
 
@@ -78,7 +72,6 @@ function mapStateToProps(state) {
   return {
     songPlaying: state.songsReducer.songPlaying,
     songPaused: state.songsReducer.songPaused,
-    timeElapsed: state.songsReducer.timeElapsed,
     songs: state.songsReducer.songs,
     songDetail: state.songsReducer.songDetail
   }

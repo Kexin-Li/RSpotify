@@ -1,7 +1,8 @@
 import { 
   FETCH_SONGS_SUCCESS, FETCH_SONGS_FAILED, 
   FETCH_RECENTLY_PLAYED_SUCCESS, FETCH_RECENTLY_PLAYED_FAILED, 
-  PLAY_SONG, PAUSE_SONG, STOP_SONG, RESUME_SONG
+  PLAY_SONG, PAUSE_SONG, STOP_SONG, RESUME_SONG,
+  INCREASE_SONG_TIME
 } from "../actions/types";
 
 const defaultState = {
@@ -42,6 +43,8 @@ export default function(state = defaultState, action) {
       return { ...state, songPaused: true };
     case RESUME_SONG:
       return { ...state, songPaused: false };
+    case INCREASE_SONG_TIME:
+      return { ...state, timeElapsed: action.payload };
     default:
       return state;
   }

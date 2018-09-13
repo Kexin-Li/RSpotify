@@ -45,8 +45,6 @@ const SideMenu = (props) => {
   };
 
   const onBrowseClick = () => {
-    // call updatePreviewTitle from props, or the action will not dispatch.
-    // see: https://stackoverflow.com/questions/49662871/redux-action-not-triggering-reducers
     props.updatePreviewTitle('Browse');
     props.fetchFeatured(props.token);
   };
@@ -58,9 +56,6 @@ const SideMenu = (props) => {
       <h5>YOUR LIBIARY</h5>
       { renderSideMenu() }
       <Artwork />
-      {/* <div className="artwork">
-        <img />
-      </div> */}
     </ul>
   );
 };

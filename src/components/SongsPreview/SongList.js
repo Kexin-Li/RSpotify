@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { createSongObj } from '../Util';
 
 class SongList extends Component {
-  playHander = (songObj) => {
+  playHandler = (songObj) => {
     (songObj.id === this.props.songId) && this.props.songPlaying && this.props.songPaused
     ? this.props.resumeSong()
     : (songObj.id === this.props.songId) && this.props.songPlaying && !this.props.songPaused
@@ -15,13 +15,13 @@ class SongList extends Component {
     const songs = this.props.songs;
 
     if (songs) {
-      return songs.map(song => {
+      return songs.map((song, index) => {
         const songObj = createSongObj(song);
         return (
-          <li key={ songObj.id }>
+          <li key={ index }>
             <span 
               className="play-song"
-              onClick={ () => this.playHander(songObj) }
+              onClick={ () => this.playHandler(songObj) }
             >
               <i className="fa fa-play-circle-o play-btn" aria-hidden="true" />
             </span>

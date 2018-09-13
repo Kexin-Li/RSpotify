@@ -24,3 +24,4 @@ export const PLAY_SONG = 'play_song';
 export const STOP_SONG = 'stop_song';
 export const PAUSE_SONG = 'pause_song';
 export const RESUME_SONG = 'resume_song';
+export const INCREASE_SONG_TIME = 'increase_song_time'

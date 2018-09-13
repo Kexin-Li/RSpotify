@@ -3,7 +3,8 @@ import axios from 'axios';
 import { 
   FETCH_SONGS_SUCCESS, FETCH_SONGS_FAILED,
   FETCH_RECENTLY_PLAYED_SUCCESS, FETCH_RECENTLY_PLAYED_FAILED,
-  PLAY_SONG, PAUSE_SONG, STOP_SONG, RESUME_SONG
+  PLAY_SONG, PAUSE_SONG, STOP_SONG, RESUME_SONG,
+  INCREASE_SONG_TIME
 } from './types';
 import { setArtistIds } from './artistsAction';
 
@@ -114,5 +115,12 @@ export function stopSong() {
 export function resumeSong() {
   return {
     type: RESUME_SONG
+  };
+}
+
+export function increaseSongTime(time) {
+  return {
+    type: INCREASE_SONG_TIME,
+    payload: time
   };
 }
