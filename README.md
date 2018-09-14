@@ -4,7 +4,9 @@ A Spotify Client Build With React & Redux.
 
 ## Preview
 
-[TODO]
+![songs](./songs.png)
+
+![browse](./browse.png)
 
 ## Usage
 
@@ -17,4 +19,4 @@ npm start
 
 ## License
 
-MIT
+[MIT](./LICENSE)
