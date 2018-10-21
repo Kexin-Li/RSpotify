@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { setToken } from '../actions/tokenAction';
 import { fetchUser } from '../actions/userAction';
 import { fetchSongs } from '../actions/songsAction';
-import { authURL } from '../config/authKeys';
+import { authURL_prod } from '../config/authKeys';
 import Spotify from './Spotify';
 
 import './App.css';
@@ -27,7 +27,7 @@ class App extends Component {
     
     // if user didn't login then bring them to login page, otherwise save the token.
     if(!hashParams.access_token) {
-      window.location.href = authURL;
+      window.location.href = authURL_prod;
     } else {
       this.props.setToken(hashParams.access_token);
     }
