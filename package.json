@@ -1,6 +1,26 @@
 {
   "name": "react-spotify",
   "version": "0.1.0",
+  "description": "A Spority client build with React and Redux.",
+  "keywords": [
+    "spority",
+    "react",
+    "redux"
+  ],
+  "author": {
+    "name": "Kexin Li",
+    "email": "hollalikexin@gmail.com",
+    "url": "https://kexin-li.github.io"
+  },
+  "license": "MIT",
+  "homepage": "https://kexin-li.github.io/RSpority",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Kexin-Li/RSpotify"
+  },
+  "bugs": {
+    "url": "https://github.com/Kexin-Li/RSpotify/issues"
+  },
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
