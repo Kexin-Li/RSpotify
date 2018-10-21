@@ -10,6 +10,13 @@ import Spotify from './Spotify';
 import './App.css';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      token: ''
+    };
+  }
+
   componentDidMount() {
     let hashParams = {};
     let e, r = /([^&;=]+)=?([^&;]*)/g,
@@ -18,6 +25,7 @@ class App extends Component {
       hashParams[e[1]] = decodeURIComponent(e[2]);
     }
     
+    // if user didn't login then bring them to login page, otherwise save the token.
     if(!hashParams.access_token) {
       window.location.href = authURL;
     } else {
@@ -25,12 +33,20 @@ class App extends Component {
     }
   }
 
-  // 在 component 接收到新的 props 时被触发
-  componentWillReceiveProps(nextProps) {
+  static getDerivedStateFromProps(nextProps, prevState) {
     if (nextProps.token) {
-      this.props.fetchUser(nextProps.token);
+      return {
+        token: nextProps.token
+      };
+    }
+    return null;
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (!prevState.token && this.props.token) {
+      this.props.fetchUser(this.props.token);
       // default loading Favorite Songs preview
-      this.props.fetchSongs(nextProps.token);
+      this.props.fetchSongs(this.props.token);
     }
   }
 
